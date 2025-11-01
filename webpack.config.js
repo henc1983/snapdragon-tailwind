@@ -55,7 +55,7 @@ const content = Object.assign({}, config, {
     name: "content",
     entry: {
         'main': [ './src/scripts/main.js' ],
-    }, 
+    }
 });
 
 
@@ -63,8 +63,8 @@ const content = Object.assign({}, config, {
 const admin = Object.assign({}, config, {
     name: "admin",
     entry: {
-        'main': [ './src/scripts/admin.js' ],
-    }, 
+        'admin': [ './src/scripts/admin.js' ],
+    }
 });
 
 
