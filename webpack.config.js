@@ -18,17 +18,13 @@ const config = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
                     {
-                        loader: 'postcss-loader',
+                        loader: 'css-loader',
                         options: {
-                            postcssOptions: {
-                                plugins: () => [
-                                    require('autoprefixer')
-                                ]
-                            }
+                            importLoaders: 1
                         }
                     },
+                    'postcss-loader',
                     'sass-loader',
                 ]
             },
@@ -51,7 +47,7 @@ const config = {
 
 
 
-const content = Object.assign({}, config, {
+const contentConfig = Object.assign({}, config, {
     name: "content",
     entry: {
         'main': [ './src/scripts/main.js' ],
@@ -60,7 +56,7 @@ const content = Object.assign({}, config, {
 
 
 
-const admin = Object.assign({}, config, {
+const adminConfig = Object.assign({}, config, {
     name: "admin",
     entry: {
         'admin': [ './src/scripts/admin.js' ],
@@ -71,10 +67,10 @@ const admin = Object.assign({}, config, {
 module.exports = (env) => {
 	switch(true) {
 		case env.admin:
-			return admin;
+			return contentConfig;
 		case env.content:
-			return content;
+			return adminConfig;
 		default:
-			return [ content, admin ];
+			return [ contentConfig , adminConfig ];
 	}
 };

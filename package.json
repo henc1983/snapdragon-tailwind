@@ -19,22 +19,31 @@
   "author": "Makai Henrik",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --mode development",
+    "webpack": "webpack --mode development --watch",
+    "tailwind": "@tailwindcss -i ./src/styles/tailwindcss.css -o ./assets/styles/style.css --watch",
     "webpack:build": "webpack --no-watch --mode production --env production",
     "webpack:content": "webpack --watch --mode development --env content",
-    "webpack:admin": "webpack --watch --mode development --env admin"
+    "webpack:admin": "webpack --watch --mode development --env admin",
+    "dev": "npm-run-all --parallel tailwind webpack"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.4",
     "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.0",
     "postcss-nested": "^7.0.2",
+    "postcss-nesting": "^13.0.2",
     "postcss-preset-env": "^10.4.0",
     "sass": "^1.93.3",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "tailwindcss": "^4.1.16"
   }
 }
